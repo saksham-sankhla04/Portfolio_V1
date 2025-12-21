@@ -8,7 +8,7 @@ function About() {
           <div className={styles.content}>
             <h1>About Me</h1>
             <p>
-              Hi there! I’m a passionate <span>full-stack developer</span> and a
+              Hi there, I'm a passionate <span>full-stack developer</span> and a
               3rd-year student at JIET Group of Institutions. With a love for
               coding and technology, I specialize in building scalable,
               user-friendly web applications that deliver seamless experiences.
@@ -24,13 +24,15 @@ function About() {
           <div className={styles.img}>
             <img
               src="https://ashik-html.vercel.app/img/about-1.png"
-              alt=""
+              alt="About Saksham"
               className={styles.imgBig}
+              loading="lazy"
             />
             <img
               src="https://ashik-html.vercel.app/img/about-2.png"
-              alt=""
+              alt="Working"
               className={styles.imgSmall}
+              loading="lazy"
             />
           </div>
         </div>

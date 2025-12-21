@@ -16,12 +16,19 @@
 
 .navbar ul li {
   font-size: 1.8rem;
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.navbar ul li a {
+  text-decoration: none;
+  color: inherit;
 }
 
 .navbar ul li:hover {
   cursor: pointer;
   font-weight: bold;
   color: #677f3f;
+  transform: translateY(-2px);
 }
 
 .banner {
@@ -32,10 +39,22 @@
 
 .content {
   width: 50%;
+  animation: fadeSlideUp 0.8s ease-out;
 }
 
 .mainPhoto {
   width: 50%;
+}
+
+@keyframes fadeSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .content h1 {
@@ -82,6 +101,19 @@ h3 {
 
   border-radius: 1.2rem;
   border: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 15px rgba(205, 254, 125, 0.4);
+  background-color: #b8e96c;
+}
+
+.btn:active {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(205, 254, 125, 0.3);
 }
 
 /*Windows 1300px*/

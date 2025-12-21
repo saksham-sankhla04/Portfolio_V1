@@ -1,19 +1,37 @@
+import { useState } from "react";
 import styles from "./Contact.module.css";
 import axios from "axios";
 import { useFormik } from "formik";
 
 function Contact() {
-  const onSubmit = async (values) => {
+  const [status, setStatus] = useState({ type: "", message: "" });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const onSubmit = async (values, { resetForm }) => {
+    setIsSubmitting(true);
+    setStatus({ type: "", message: "" });
+
     const url = "http://localhost:3000/sendMail";
     const payload = {
-      to: values.email,
+      name: values.name,
       from: values.email,
+      phone: values.number,
       subject: values.subject,
       body: values.body,
     };
-    const res = await axios.post(url, payload);
-    console.log(res);
-    console.log("Form submit");
+
+    try {
+      await axios.post(url, payload);
+      setStatus({ type: "success", message: "Message sent successfully!" });
+      resetForm();
+    } catch (error) {
+      setStatus({
+        type: "error",
+        message: "Failed to send message. Please try again.",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const { values, handleChange, handleSubmit } = useFormik({
@@ -26,6 +44,7 @@ function Contact() {
     },
     onSubmit,
   });
+
   return (
     <>
       <div className={styles.contact} id="contact">
@@ -76,6 +95,13 @@ function Contact() {
           </ul>
         </div>
         <form action="" className={styles.form}>
+          {status.message && (
+            <div
+              className={`${styles.status} ${status.type === "success" ? styles.success : styles.error}`}
+            >
+              {status.message}
+            </div>
+          )}
           <input
             onChange={handleChange}
             value={values.name}
@@ -87,8 +113,8 @@ function Contact() {
             onChange={handleChange}
             value={values.number}
             id="number"
-            type="number"
-            placeholder="Number"
+            type="text"
+            placeholder="Phone Number"
           />
           <input
             onChange={handleChange}
@@ -96,6 +122,7 @@ function Contact() {
             id="email"
             type="email"
             placeholder="Email"
+            required
           />
           <input
             onChange={handleChange}
@@ -103,16 +130,17 @@ function Contact() {
             id="subject"
             type="text"
             placeholder="Subject"
+            required
           />
           <textarea
             onChange={handleChange}
             value={values.body}
             id="body"
-            type="text"
-            placeholder="Body"
+            placeholder="Your Message"
+            required
           />
-          <button type="button" onClick={handleSubmit}>
-            Submit
+          <button type="button" onClick={handleSubmit} disabled={isSubmitting}>
+            {isSubmitting ? "Sending..." : "Submit"}
           </button>
         </form>
       </div>

@@ -1,6 +1,6 @@
 import styles from "./Banner.module.css";
 import { TypeAnimation } from "react-type-animation";
-import { Link } from "react-scroll";
+import { Link } from "react-router-dom";
 
 function Banner() {
   return (
@@ -9,29 +9,19 @@ function Banner() {
         <div className={styles.navbar}>
           <ul>
             <li>
-              <Link to="home" smooth={true} duration={500}>
-                Home
-              </Link>
+              <a href="#home">Home</a>
             </li>
             <li>
-              <Link to="about" smooth={true} duration={500}>
-                About
-              </Link>
+              <a href="#about">About</a>
             </li>
             <li>
-              <Link to="services" smooth={true} duration={500}>
-                Services
-              </Link>
+              <a href="#services">Services</a>
             </li>
             <li>
-              <Link to="projects" smooth={true} duration={500}>
-                Projects
-              </Link>
+              <Link to="/projects">Projects</Link>
             </li>
             <li>
-              <Link to="contact" smooth={true} duration={500}>
-                Contact
-              </Link>
+              <a href="#contact">Contact</a>
             </li>
           </ul>
         </div>
@@ -65,8 +55,9 @@ function Banner() {
           </div>
           <img
             src="https://ashik-html.vercel.app/img/author-banner.png"
-            alt=""
+            alt="Saksham Sankhla"
             className={styles.mainPhoto}
+            fetchPriority="high"
           />
         </div>
       </div>

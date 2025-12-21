@@ -45,7 +45,7 @@
 
   transform: translateY(50px);
   opacity: 0;
-  animation: textUp linear forwards;
+  animation: textUp ease-out forwards;
   animation-timeline: view();
   animation-range: entry 50px;
 }
@@ -57,7 +57,7 @@
 
   transform: translateY(50px);
   opacity: 0;
-  animation: textUp linear forwards;
+  animation: textUp ease-out forwards;
   animation-timeline: view();
   animation-range: entry 50px;
 }
@@ -83,7 +83,7 @@
 
   transform: translateY(50px);
   opacity: 0;
-  animation: textUp linear forwards;
+  animation: textUp ease-out forwards;
   animation-timeline: view();
   animation-range: entry 50px;
 }
@@ -122,7 +122,7 @@
   line-height: 6rem;
   transform: translateY(50px);
   opacity: 0;
-  animation: textUp linear forwards;
+  animation: textUp ease-out forwards;
   animation-timeline: view();
   animation-range: entry 50px;
 }
@@ -138,7 +138,7 @@
 
   transform: translateX(50px);
   opacity: 0;
-  animation: textUp linear forwards;
+  animation: textUp ease-out forwards;
   animation-timeline: view();
   animation-range: entry 50px;
 }
@@ -149,6 +149,12 @@
   text-align: center;
   border-radius: 2.4rem;
   box-shadow: 0px 0px 60px 0px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0px 12px 40px rgba(0, 0, 0, 0.1);
 }
 
 .icon {

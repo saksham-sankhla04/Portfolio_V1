@@ -1,0 +1,136 @@
+.page {
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 130rem;
+  margin: 0 auto;
+  padding: 0 3.6rem;
+}
+
+/* Header */
+.header {
+  padding: 2.4rem 0;
+  border-bottom: 1px solid #eee;
+}
+
+.backLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #677f3f;
+  text-decoration: none;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.backLink:hover {
+  transform: translateX(-4px);
+  color: #4a5c2d;
+}
+
+.backLink svg {
+  width: 2rem;
+  height: 2rem;
+}
+
+/* Hero */
+.hero {
+  padding: 6.4rem 0;
+  background-color: #f6f7f9;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 6.4rem;
+  color: #677f3f;
+  margin-bottom: 1.6rem;
+}
+
+.hero p {
+  font-size: 2rem;
+  color: #666;
+  max-width: 60rem;
+  margin: 0 auto;
+  line-height: 3rem;
+}
+
+/* Projects Grid */
+.projects {
+  padding: 6.4rem 0;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3.2rem;
+}
+
+/* Footer CTA */
+.footer {
+  padding: 6.4rem 0;
+  background-color: #f6f7f9;
+  text-align: center;
+}
+
+.footer p {
+  font-size: 2.4rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 2.4rem;
+}
+
+.contactBtn {
+  display: inline-block;
+  background-color: #cdfe7d;
+  color: #000;
+  font-size: 1.8rem;
+  font-weight: 700;
+  padding: 2rem 4rem;
+  border-radius: 1.2rem;
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+.contactBtn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 15px rgba(205, 254, 125, 0.4);
+  background-color: #b8e96c;
+}
+
+/* Responsive */
+@media (max-width: 1000px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 700px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero h1 {
+    font-size: 4.8rem;
+  }
+
+  .hero p {
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .hero h1 {
+    font-size: 4rem;
+  }
+
+  .footer p {
+    font-size: 2.8rem;
+  }
+
+  .contactBtn {
+    font-size: 2rem;
+    padding: 2.4rem 4.8rem;
+  }
+}

@@ -1,20 +1,19 @@
-import Banner from "./components/Banner.jsx";
-import About from "./components/About.jsx";
-import Projects from "./components/Projects.jsx";
-import Contact from "./components/Contact.jsx";
-import Skills from "./components/Skills.jsx";
-import Footer from "./components/Footer.jsx";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { lazy, Suspense } from "react";
+import Home from "./pages/Home";
+
+const ProjectsPage = lazy(() => import("./pages/ProjectsPage"));
 
 function App() {
   return (
-    <>
-      <Banner />
-      <About />
-      <Projects />
-      <Skills />
-      <Contact />
-      <Footer />
-    </>
+    <BrowserRouter>
+      <Suspense fallback={<div style={{ minHeight: "100vh" }} />}>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/projects" element={<ProjectsPage />} />
+        </Routes>
+      </Suspense>
+    </BrowserRouter>
   );
 }
 
