@@ -11,7 +11,7 @@ function Contact() {
     setIsSubmitting(true);
     setStatus({ type: "", message: "" });
 
-    const url = "http://localhost:3000/sendMail";
+    const url = `${import.meta.env.VITE_API_URL}/sendMail`;
     const payload = {
       name: values.name,
       from: values.email,
