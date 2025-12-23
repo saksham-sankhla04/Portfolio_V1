@@ -1,4 +1,8 @@
-const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || "http://localhost:3000";
+const BACKEND_URL =
+  import.meta.env.VITE_BACKEND_URL ||
+  (window.location.hostname === "localhost"
+    ? "http://localhost:3000"
+    : "https://portfolio-backend-9r2f.onrender.com");
 
 /**
  * Track page views
