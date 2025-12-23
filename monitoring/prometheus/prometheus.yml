@@ -3,5 +3,6 @@ global:
 
 scrape_configs:
   - job_name: "portfolio-backend"
+    scheme: https
     static_configs:
-      - targets: ["192.168.31.209:3000"]
+      - targets: ["portfolio-backend-9r2f.onrender.com"]
