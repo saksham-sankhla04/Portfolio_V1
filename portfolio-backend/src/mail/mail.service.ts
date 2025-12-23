@@ -5,6 +5,8 @@ import { ConfigService } from '@nestjs/config';
 import { SendMailDto } from './dto/send-mail.dto';
 import { Contact, ContactDocument } from './schemas/contact.schema';
 import { Resend } from 'resend';
+import { InjectMetric } from '@willsoto/nestjs-prometheus';
+import { Counter } from 'prom-client';
 
 @Injectable()
 export class MailService {
@@ -13,6 +15,8 @@ export class MailService {
   constructor(
     private configService: ConfigService,
     @InjectModel(Contact.name) private contactModel: Model<ContactDocument>,
+    @InjectMetric('emails_sent_total')
+    private emailCounter: Counter<string>,
   ) {
     this.resend = new Resend(this.configService.get<string>('RESEND_API_KEY'));
   }
@@ -65,9 +69,15 @@ export class MailService {
       }
 
       console.log('Email sent successfully:', data?.id);
+
+      this.emailCounter.inc({ status: 'success' }); // Incrementing mail counter
+
       return { success: true, message: 'Email sent and saved successfully' };
     } catch (error) {
       console.error('Error sending email:', error);
+
+      this.emailCounter.inc({ status: 'failure' });
+
       // Still return success since data is saved to MongoDB
       return {
         success: true,
