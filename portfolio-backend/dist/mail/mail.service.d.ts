@@ -5,7 +5,7 @@ import { Contact, ContactDocument } from './schemas/contact.schema';
 export declare class MailService {
     private configService;
     private contactModel;
-    private transporter;
+    private resend;
     constructor(configService: ConfigService, contactModel: Model<ContactDocument>);
     sendMail(sendMailDto: SendMailDto): Promise<{
         success: boolean;

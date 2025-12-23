@@ -6,8 +6,9 @@ const app_module_1 = require("./app.module");
 async function bootstrap() {
     const app = await core_1.NestFactory.create(app_module_1.AppModule);
     app.enableCors({
-        origin: ['http://localhost:5173', 'http://localhost:3000'],
+        origin: '*',
         methods: ['GET', 'POST', 'PUT', 'DELETE'],
+        allowedHeaders: ['Content-Type', 'Authorization', 'Accept'],
         credentials: true,
     });
     app.useGlobalPipes(new common_1.ValidationPipe({
@@ -16,8 +17,8 @@ async function bootstrap() {
         transform: true,
     }));
     const port = process.env.PORT ?? 3000;
-    await app.listen(port);
-    console.log(`🚀 Server running on http://localhost:${port}`);
+    await app.listen(port, '0.0.0.0');
+    console.log(`🚀 Server running on port ${port}`);
 }
 bootstrap();
 //# sourceMappingURL=main.js.map
