@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { lazy, Suspense, useEffect } from "react";
 import Home from "./pages/Home";
 import { trackPageView, initErrorTracking } from "./utils/analytics";
+import { HelmetProvider } from "react-helmet-async";
 
 const ProjectsPage = lazy(() => import("./pages/ProjectsPage"));
 
@@ -30,9 +31,11 @@ function AppContent() {
 
 function App() {
   return (
-    <BrowserRouter>
-      <AppContent />
-    </BrowserRouter>
+    <HelmetProvider>
+      <BrowserRouter>
+        <AppContent />
+      </BrowserRouter>
+    </HelmetProvider>
   );
 }
 

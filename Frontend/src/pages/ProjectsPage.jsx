@@ -2,10 +2,17 @@ import { Link } from "react-router-dom";
 import styles from "./ProjectsPage.module.css";
 import ProjectCard from "../components/ProjectCard";
 import projects from "../data/projects";
+import HelmetSeo from "../utils/HelmetSeo";
 
 function ProjectsPage() {
   return (
     <div className={styles.page}>
+      <HelmetSeo
+        title="Projects | Saksham Sankhla - Portfolio"
+        description="Explore Saksham Sankhla's portfolio of web development projects showcasing skills in React, JavaScript, and modern web technologies."
+        canonical="/projects"
+        keywords="Saksham Sankhla projects, portfolio, web development, React projects, case studies"
+      />
       <header className={styles.header}>
         <div className={styles.container}>
           <Link to="/" className={styles.backLink}>
